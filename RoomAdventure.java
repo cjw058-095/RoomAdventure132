@@ -63,6 +63,10 @@ public class RoomAdventure {
         for (int i=0; i < directions.length; i++){
             // for strings we use .equals() to compare
             if (noun.equals(directions[i])){
+                if (directions[i].equals("escape!")){
+                    System.out.println("You did it! You got out!");
+                    System.exit(0);
+                }
                 currentRoom = rooms[i];
                 status = "Changed Room";
             }
@@ -111,6 +115,7 @@ public class RoomAdventure {
         Room room2 = new Room("Room 2");
         Room room3 = new Room("Room 3");
         Room room4 = new Room("Room 4");
+        Room room5 = new Room("Room 5");
 
         // Room 1 setup
         String[] room1ExitDirections = {"south", "east"};
@@ -159,8 +164,8 @@ public class RoomAdventure {
         room3.setItemDescription(room3ItemDescriptions);
         room3.setGrabbables(room3Grabbables);
 
-        String[] room4ExitDirections = {"west", "south"};
-        Room[] room4ExitDestinations = {room1, room3};
+        String[] room4ExitDirections = {"west", "south", "north"};
+        Room[] room4ExitDestinations = {room1, room3, room5};
         String[] room4Items = {"ShyGuy", "Victim"};
         String[] room4ItemDescriptions = {
     "                       ______\n" +
@@ -187,7 +192,23 @@ public class RoomAdventure {
         room4.setItems(room4Items);
         room4.setItemDescription(room4ItemDescriptions);
         room4.setGrabbables(room4Grabbables);
-        
+
+         String[] room5ExitDirections = {"south", "escape!"};
+        Room[] room5ExitDestinations = {null, null}; // assuming south leads nowhere
+        String[] room5Items = {null, null};
+        String[] room5ItemDescriptions = {
+            null,
+            null
+        };
+        String[] room5Grabbables = {null, null};
+
+        room5.setExitDirections(room5ExitDirections);
+        room5.setExitDestinations(room5ExitDestinations);
+        room5.setItems(room5Items);
+        room5.setItemDescription(room5ItemDescriptions);
+        room5.setGrabbables(room5Grabbables);
+
+
 
 
         currentRoom = room1;
